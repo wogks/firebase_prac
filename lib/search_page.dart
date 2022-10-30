@@ -1,6 +1,6 @@
+import 'package:fire_prac_insta/create_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -17,18 +17,23 @@ class _SearchPageState extends State<SearchPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         child: const Icon(Icons.create),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CreatePage(),),
+          );
+        },
       ),
     );
   }
 
   _buildBody() {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 1,
-        mainAxisSpacing: 1,
-        crossAxisSpacing: 1,
+        mainAxisSpacing: 3,
+        crossAxisSpacing: 3,
       ),
       itemCount: 5,
       itemBuilder: (context, index) {
