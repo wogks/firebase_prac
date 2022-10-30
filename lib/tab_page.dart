@@ -1,5 +1,6 @@
 import 'package:fire_prac_insta/account_page.dart';
 import 'package:fire_prac_insta/home_page.dart';
+import 'package:fire_prac_insta/search_page.dart';
 import 'package:flutter/material.dart';
 
 class TabPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _TabPageState extends State<TabPage> {
 
   final List _pages = const [
     HomePage(),
-    Text('3'),
+    SearchPage(),
     AccountPage(),
   ];
   @override

@@ -48,31 +48,30 @@ class _AccountPageState extends State<AccountPage> {
                     ),
                   ),
                   Container(
-                    width: 80,
-                    height: 80,
-                    alignment: Alignment.bottomRight,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: const [
-                        SizedBox(
-                      width: 28,
-                      height: 28,
-                      child: FloatingActionButton(
-                          backgroundColor: Colors.white,
-                          onPressed: null,
+                      width: 80,
+                      height: 80,
+                      alignment: Alignment.bottomRight,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: const [
+                          SizedBox(
+                            width: 28,
+                            height: 28,
+                            child: FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              onPressed: null,
+                            ),
                           ),
-                    ),
-                        SizedBox(
-                      width: 25,
-                      height: 25,
-                      child: FloatingActionButton(
-                          backgroundColor: Colors.blue,
-                          onPressed: null,
-                          child: Icon(Icons.add)),
-                    ),
-                      ],
-                    )
-                  )
+                          SizedBox(
+                            width: 25,
+                            height: 25,
+                            child: FloatingActionButton(
+                                backgroundColor: Colors.blue,
+                                onPressed: null,
+                                child: Icon(Icons.add)),
+                          ),
+                        ],
+                      ))
                 ],
               ),
               const Padding(padding: EdgeInsets.all(8)),
