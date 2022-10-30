@@ -1,6 +1,6 @@
+import 'package:fire_prac_insta/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class TabPage extends StatefulWidget {
   const TabPage({super.key});
@@ -12,8 +12,8 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
 
-  List _pages = [
-    Text('1'),
+  final List _pages = [
+    HomePage(),
     Text('2'),
     Text('3'),
   ];
@@ -24,6 +24,7 @@ class _TabPageState extends State<TabPage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
+        fixedColor: Colors.black,
         items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),

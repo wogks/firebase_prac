@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primaryColor: Colors.white,
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+              .copyWith(secondary: Colors.black)),
       home: const RootPage(),
     );
   }
 }
-
