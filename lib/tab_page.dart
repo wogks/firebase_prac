@@ -1,37 +1,52 @@
-import 'package:fire_prac_insta/account_page.dart';
-import 'package:fire_prac_insta/home_page.dart';
 import 'package:fire_prac_insta/search_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'account_page.dart';
+import 'home_page.dart';
+
+
 class TabPage extends StatefulWidget {
-  const TabPage({super.key});
+  final User user;
+
+  const TabPage(this.user, {Key? key}) : super(key: key);
 
   @override
-  State<TabPage> createState() => _TabPageState();
+  _TabPageState createState() => _TabPageState();
 }
 
 class _TabPageState extends State<TabPage> {
   int _selectedIndex = 0;
 
-  final List _pages = const [
-    HomePage(),
-    SearchPage(),
-    AccountPage(),
-  ];
+  late List _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      HomePage(),
+      SearchPage(),
+      AccountPage(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('tab_page created');
     return Scaffold(
-      body: Center(child: _pages[_selectedIndex]),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-          onTap: _onItemTapped,
-          currentIndex: _selectedIndex,
-          fixedColor: Colors.black,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), label: 'Account'),
-          ]),
+        fixedColor: Colors.black,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'account'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 

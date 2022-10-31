@@ -58,8 +58,7 @@ class _CreatePageState extends State<CreatePage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _image == null ? const Text('No Image')
-          :Image.file(_image!),
+          _image == null ? const Text('No Image') : Image.file(_image!),
           TextField(
             decoration: const InputDecoration(hintText: '내용을 입력하세요'),
             controller: _controller,
@@ -68,17 +67,15 @@ class _CreatePageState extends State<CreatePage> {
       ),
     );
   }
-  
+
   Future _getImage() async {
     print('클릭');
     final image = await _picker.pickImage(source: ImageSource.gallery);
-    
-    if(image != null){
+
+    if (image != null) {
       setState(() {
         _image = File(image.path);
       });
-    } else {
-      
-    }
+    } else {}
   }
 }
