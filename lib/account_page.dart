@@ -1,3 +1,4 @@
+import 'package:fire_prac_insta/login_page.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -21,7 +22,12 @@ class _AccountPageState extends State<AccountPage> {
       backgroundColor: Colors.white,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginPage(),),
+            );
+          },
           icon: const Icon(Icons.exit_to_app, color: Colors.black),
         ),
       ],
