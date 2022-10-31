@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreatePage extends StatefulWidget {
   const CreatePage({super.key});
@@ -11,20 +12,25 @@ class CreatePage extends StatefulWidget {
 
 class _CreatePageState extends State<CreatePage> {
   final _controller = TextEditingController();
+  final _picker = ImagePicker();
+
+  File? _image;
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppbar(),
       body: _buildBody(),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        
-      },
-      child: const Icon(Icons.add_a_photo),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _getImage();
+        },
+        child: const Icon(Icons.add_a_photo),
       ),
     );
   }
@@ -47,16 +53,32 @@ class _CreatePageState extends State<CreatePage> {
       ],
     );
   }
-  
+
   _buildBody() {
-    return Column(
-      children: [
-        const Text('No Image'),
-        TextField(
-          decoration: InputDecoration(hintText: '내용을 입력하세요'),
-          controller: _controller,
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          _image == null ? const Text('No Image')
+          :Image.file(_image!),
+          TextField(
+            decoration: const InputDecoration(hintText: '내용을 입력하세요'),
+            controller: _controller,
+          )
+        ],
+      ),
     );
+  }
+  
+  Future _getImage() async {
+    print('클릭');
+    final image = await _picker.pickImage(source: ImageSource.gallery);
+    
+    if(image != null){
+      setState(() {
+        _image = File(image.path);
+      });
+    } else {
+      
+    }
   }
 }
